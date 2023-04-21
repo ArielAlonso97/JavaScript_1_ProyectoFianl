@@ -269,8 +269,18 @@ h2 {
 
 
     .egreso{
+        width: 70%;
+        
+        margin-left:15% ;
+        margin-right:15% ;
         margin-top: 50px;
         margin-bottom: 50px;
+    }
+    .ingreso{
+        width: 70%;
+        
+        margin-left:15% ;
+        margin-right:15% ;
     }
     .cabecero{
         height: 300px;
