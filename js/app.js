@@ -1,6 +1,6 @@
 
-let ingresos = [new Ingreso("Salario", 20000), new Ingreso("Venta de auto", 500), new Ingreso("Venta Xbox", 7000), new Ingreso("jsndfjnsdf", 12)];
-let egresos = [new Egreso("Renta", 4000), new Egreso("Ropa", 800), new Egreso("Xbox", 7000)];
+let ingresos = [/*new Ingreso("Salario", 20000), new Ingreso("Venta de auto", 500), new Ingreso("Venta Xbox", 7000), new Ingreso("Venta", 5000)*/];
+let egresos = [/*new Egreso("Renta", 4000), new Egreso("Ropa", 800), new Egreso("Xbox", 7000)*/];
 
 
 let formatoMoneda = (formatearValor) => {
