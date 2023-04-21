@@ -1,6 +1,12 @@
-let ingresos = [new Ingreso ("Salario",20000), new Ingreso("Venta de auto",50000)];
-let egresos = [new Egreso ("Renta",4000),new Egreso("Ropa",800)];
+let ingresos = [new Ingreso("Salario", 20000), new Ingreso("Venta de auto", 500)];
+let egresos = [new Egreso("Renta", 4000), new Egreso("Ropa", 800)];
+let formatoMoneda = (formatearValor) => {
+    return formatearValor.toLocaleString("es-ES", { style: "currency", currency: "MXN", minimumFractionDigits: 2 });
+}
 
+let formatoPorcentaje = (formatearValor) => {
+    return formatearValor.toLocaleString("es-ES", { style: "percent", minimumFractionDigits: 2 });
+}
 let cargarCabecero = () => {
 
     let totalIngresos = () => {
@@ -22,21 +28,46 @@ let cargarCabecero = () => {
     let presupuesto = totalIngresos() - totalEgresos();
     let porcentajeEgreso = totalEgresos() / totalIngresos();
 
-    let formatoMoneda = (formatearValor) => {
-        return formatearValor.toLocaleString("es-ES", { style: "currency", currency: "MXN", minimumFractionDigits: 2 });
-    }
-    
-    let formatoPorcentaje = (formatearValor) => {
-        return formatearValor.toLocaleString("es-ES", { style: "percent", minimumFractionDigits: 2 });
-    }
 
 
-    
-    console.log(formatoMoneda(presupuesto));
-    console.log(formatoPorcentaje(porcentajeEgreso));
-    console.log(formatoMoneda(totalIngresos()));
-    console.log(formatoMoneda(totalEgresos()));
+
+
+    document.getElementById("presupuesto").innerHTML = formatoMoneda(presupuesto);
+    document.getElementById("porcentaje").innerHTML = formatoPorcentaje(porcentajeEgreso);
+    document.getElementById("ingresos").innerHTML = formatoMoneda(totalIngresos());
+    document.getElementById("egresos").innerHTML = formatoMoneda(totalEgresos());
 }
 
+let cargarApp = () => {
+    cargarCabecero()
+    cargarIngresos()
+}
 
-cargarCabecero()
+let cargarIngresos = () => {
+    let ingresosHTML = "";
+    let crearIngresoHTML = (ingreso) => {
+        let descripcion = document.getElementsByClassName("elemento_descripcion").innerHTML = `<div class="elemento_descripcion"> ${ingreso.descripcion}</div>`;
+        let valor = document.getElementsByClassName("elemento_valor").innerHTML = `<div class="elemento_valor">${formatoMoneda(ingreso.valor)}</div>`;
+        let icon = document.createElement('ion-icon');
+        icon.setAttribute('name', 'close-circle-outline');
+        let boton = `<ion-icon name="close-circle-outline">${icon.innerHTML = ""}</ion-icon>`;
+        let derecha =`<div class="derecha limpiarEstilos">${valor} ${boton}</div>`;
+        
+
+        let ingresoHTML =  `<div class="elemento limpiarEstilos"> ${descripcion}  ${derecha}</div>` ;
+        
+        
+
+        return ingresoHTML;
+        ;
+    }
+
+    for (let ingreso of ingresos) {
+        ingresosHTML += crearIngresoHTML(ingreso);
+
+    }
+    document.getElementById("lista-ingresos").innerHTML = ingresosHTML;
+
+    return ingresosHTML
+}
+
