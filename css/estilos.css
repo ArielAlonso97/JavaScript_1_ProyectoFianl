@@ -2,6 +2,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    max-width: 100%;
 }
 
 .limpiarEstilos::after {
@@ -257,3 +258,22 @@ h2 {
 .elemento:hover .elemento_eliminar--btn { display: block; }
 .elemento:hover .elemento_valor { transform: translateX(-20px); }
 .elemento:hover .elemento_porcentaje { transform: translateX(-20px); }
+
+
+@media only screen and (max-width: 769px){
+    .egreso_titulo, .ingreso_titulo{
+        clear: both;
+        text-align: center;
+
+    }
+
+
+    .egreso{
+        margin-top: 50px;
+        margin-bottom: 50px;
+    }
+    .cabecero{
+        height: 300px;
+    }
+}
+
